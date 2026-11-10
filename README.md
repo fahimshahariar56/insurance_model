@@ -1,190 +1,313 @@
 # 🏥 Insurance Cost Prediction
 
 <p align="center">
-  <b>Machine Learning Project for Predicting Medical Insurance Costs</b>
+  <b>Machine Learning Project for Medical Insurance Cost Prediction</b>
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Python-3.x-blue?style=for-the-badge&logo=python" alt="Python">
-  <img src="https://img.shields.io/badge/Machine%20Learning-Regression-orange?style=for-the-badge" alt="Machine Learning">
+  <img src="https://img.shields.io/badge/Python-3.x-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python">
+  <img src="https://img.shields.io/badge/Pandas-Data%20Analysis-150458?style=for-the-badge&logo=pandas&logoColor=white" alt="Pandas">
+  <img src="https://img.shields.io/badge/Scikit--Learn-Machine%20Learning-F7931E?style=for-the-badge&logo=scikit-learn&logoColor=white" alt="Scikit-learn">
   <img src="https://img.shields.io/badge/Jupyter-Notebook-F37626?style=for-the-badge&logo=jupyter&logoColor=white" alt="Jupyter">
-  <img src="https://img.shields.io/badge/Status-Completed-success?style=for-the-badge" alt="Status">
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/EDA-Completed-success?style=flat-square" alt="EDA">
+  <img src="https://img.shields.io/badge/Feature%20Engineering-Completed-success?style=flat-square" alt="Feature Engineering">
+  <img src="https://img.shields.io/badge/Feature%20Selection-Chi--Square-blue?style=flat-square" alt="Feature Selection">
 </p>
 
 ---
 
 ## 📌 Overview
 
-**Insurance Cost Prediction** is a Machine Learning project that analyzes personal and demographic information to predict an individual's **medical insurance cost**.
+**Insurance Cost Prediction** is a Machine Learning project focused on analyzing personal, demographic, and lifestyle-related information to understand and predict **medical insurance charges**.
 
-The project uses a real-world style insurance dataset and explores how factors such as **age, BMI, smoking status, number of children, gender, and region** influence insurance charges.
+The project follows a complete data-analysis and preprocessing workflow, starting from raw insurance data and progressing through:
 
-The complete workflow is implemented in a Jupyter Notebook, covering:
-
-- 📊 Data exploration
-- 🧹 Data preprocessing
-- 🔍 Exploratory Data Analysis (EDA)
-- 📈 Data visualization
-- 🧠 Machine Learning model development
-- 📏 Model evaluation
-- 💰 Insurance cost prediction
+- 📊 Exploratory Data Analysis (EDA)
+- 🧹 Data cleaning and preprocessing
+- 🔤 Categorical feature encoding
+- ⚖️ Feature scaling
+- 🧬 Feature engineering
+- 🔗 Pearson correlation analysis
+- 🧪 Chi-Square feature selection
+- 🎯 Final feature preparation for Machine Learning
 
 ---
 
 ## 🎯 Project Objective
 
-The primary objective of this project is to build a Machine Learning model capable of estimating medical insurance charges based on an individual's characteristics.
+The main objective of this project is to prepare insurance data for a Machine Learning regression problem where:
 
-### Input Features
+> **`charges`** is the target variable representing medical insurance cost.
+
+The project investigates which features have meaningful relationships with insurance charges and prepares a refined feature set for predictive modeling.
+
+---
+
+## 📊 Dataset
+
+The dataset contains **1,338 records and 7 original features**.
+
+### Original Features
 
 | Feature | Description |
 |---|---|
 | 👤 `age` | Age of the individual |
 | ⚧️ `sex` | Gender |
 | ⚖️ `bmi` | Body Mass Index |
-| 👶 `children` | Number of dependents/children |
+| 👶 `children` | Number of children/dependents |
 | 🚬 `smoker` | Smoking status |
 | 🌎 `region` | Residential region |
+| 💰 `charges` | Medical insurance charges |
 
-### 🎯 Target
+### Dataset Statistics
 
-**`charges`** — Estimated medical insurance cost.
+| Statistic | Age | BMI | Children | Charges |
+|---|---:|---:|---:|---:|
+| Mean | 39.21 | 30.66 | 1.09 | 13,270.42 |
+| Minimum | 18 | 15.96 | 0 | 1,121.87 |
+| Median | 39 | 30.40 | 1 | 9,382.03 |
+| Maximum | 64 | 53.13 | 5 | 63,770.43 |
 
----
-
-## 🧠 Machine Learning Workflow
-
-```text
-              📂 Dataset
-                  │
-                  ▼
-          🔍 Data Exploration
-                  │
-                  ▼
-          🧹 Data Preprocessing
-                  │
-                  ▼
-       📊 Exploratory Data Analysis
-                  │
-                  ▼
-         🔧 Feature Engineering
-                  │
-                  ▼
-        🧠 Model Training
-                  │
-                  ▼
-         📏 Model Evaluation
-                  │
-                  ▼
-        💰 Cost Prediction
-```
+The dataset contains **no missing values** across the seven original columns.
 
 ---
 
-## 📊 Dataset
+## 🔍 Exploratory Data Analysis
 
-The project uses an insurance dataset containing demographic, lifestyle, and medical-related attributes.
+The project performs exploratory analysis to understand the distribution and characteristics of the dataset.
 
-The dataset includes:
+The analysis includes:
 
-- Age
-- Gender
-- BMI
-- Number of children
-- Smoking status
-- Region
-- Medical insurance charges
+- 👶 Children distribution
+- ⚧️ Gender distribution
+- 🚬 Smoker distribution
+- 🌎 Region distribution
+- 📈 Numerical feature statistics
+- 🔗 Feature-to-target relationships
+- 📊 Correlation analysis
 
-The dataset is included in this repository as:
+The original dataset contains **676 male** and **662 female** records.
 
-```text
-insurance.csv
-```
+Regional distribution:
 
----
+| Region | Records |
+|---|---:|
+| Southeast | 364 |
+| Southwest | 325 |
+| Northwest | 325 |
+| Northeast | 324 |
 
-## 🔎 Exploratory Data Analysis
 
-The notebook investigates relationships between the input variables and insurance charges.
-
-Some of the major analysis areas include:
-
-- 📈 Age vs. insurance charges
-- ⚖️ BMI vs. insurance charges
-- 🚬 Smoking status vs. insurance charges
-- 👶 Number of children vs. insurance charges
-- 🌎 Region-wise insurance charges
-- ⚧️ Gender-wise insurance charges
-- 🔗 Correlation between numerical features
-
-These visualizations help identify important patterns and relationships within the dataset.
 
 ---
 
 ## 🧹 Data Preprocessing
 
-Before training the Machine Learning model, the dataset is prepared through several preprocessing steps.
+The categorical variables are transformed into numerical representations to make the dataset suitable for Machine Learning algorithms.
 
-Typical preprocessing includes:
+### Gender Encoding
 
-- Handling categorical variables
-- Encoding categorical features
-- Preparing numerical features
-- Separating input features and target
-- Splitting the dataset into training and testing sets
+The `sex` feature is converted into a binary representation:
+
+```text
+female → 1
+male   → 0
+```
+
+### Smoking Encoding
+
+The `smoker` feature is also converted into a binary representation:
+
+```text
+yes → 1
+no  → 0
+```
+
+
 
 ---
 
-## 🤖 Machine Learning
+## 🧬 Feature Engineering
 
-This project focuses on **Regression**, because the target variable `charges` represents a continuous numerical value.
-
-The model learns the relationship between the individual's characteristics and their medical insurance cost.
-
-### Prediction Example
+A new feature called:
 
 ```text
-Age:              30
-BMI:              27.5
-Children:          2
-Smoker:           No
-Region:           Southeast
-Sex:              Male
+bmi_category
+```
 
-              ↓
+is created from the original `bmi` feature.
 
-       🤖 ML Model
+The BMI values are grouped into categories such as:
 
-              ↓
+- 🟢 Normal
+- 🟡 Overweight
+- 🔴 Obese
 
-Estimated Insurance Cost
+This creates an additional categorical representation of BMI.
+
+The categorical BMI feature is then transformed using one-hot encoding.
+
+Example generated features:
+
+```text
+bmi_category_Normal
+bmi_category_Overweight
+bmi_category_Obese
+```
+
+
+
+---
+
+## ⚖️ Feature Scaling
+
+Numerical features such as:
+
+- `age`
+- `bmi`
+- `children`
+
+are standardized during preprocessing.
+
+The transformed values are represented on a standardized scale, making the numerical features more suitable for subsequent Machine Learning processing.
+
+---
+
+## 🔗 Correlation Analysis
+
+Pearson correlation is used to examine the relationship between the processed features and the target variable `charges`.
+
+### Top Correlated Features
+
+| Feature | Pearson Correlation |
+|---|---:|
+| 🚬 `is_smoker` | **0.787251** |
+| 👤 `age` | **0.299009** |
+| 🔴 `bmi_category_Obese` | **0.199533** |
+| ⚖️ `bmi` | **0.196188** |
+| 🌎 `region_southeast` | **0.073981** |
+| 👶 `children` | **0.067999** |
+
+The strongest correlation with insurance charges is observed for **`is_smoker`**, with a Pearson correlation of approximately **0.787**.
+
+---
+
+## 🧪 Chi-Square Feature Selection
+
+Chi-Square testing is used to evaluate the relationship between categorical features and the target.
+
+The analysis uses a significance level of:
+
+```text
+α = 0.05
+```
+
+### Selected Features
+
+Features with statistically significant results include:
+
+| Feature | Chi-Square | p-value | Decision |
+|---|---:|---:|---|
+| 🚬 `is_smoker` | 854.020268 | 0.000000 | Keep |
+| 🌎 `region_southeast` | 15.208814 | 0.001647 | Keep |
+| ⚧️ `is_female` | 9.532132 | 0.022992 | Keep |
+| 🔴 `bmi_category_Obese` | 8.510101 | 0.036566 | Keep |
+
+Features such as `region_southwest`, `region_northwest`, and the other BMI categories did not meet the selected significance threshold.
+
+---
+
+## ⭐ Final Feature Set
+
+After preprocessing and feature selection, the final dataset contains the following features:
+
+```text
+age
+is_female
+bmi
+children
+is_smoker
+region_southeast
+bmi_category_Obese
+charges
+```
+
+The final feature matrix therefore contains **7 input features plus the target variable `charges`**.
+
+### Feature Pipeline
+
+```text
+Raw Dataset
+     │
+     ▼
+Data Cleaning
+     │
+     ▼
+Categorical Encoding
+     │
+     ▼
+Feature Engineering
+     │
+     ├── BMI Category
+     │
+     ▼
+One-Hot Encoding
+     │
+     ▼
+Feature Scaling
+     │
+     ▼
+Pearson Correlation
+     │
+     ▼
+Chi-Square Feature Selection
+     │
+     ▼
+Final Feature Set
 ```
 
 ---
 
-## 📏 Model Evaluation
+## 🤖 Machine Learning Problem
 
-The model's performance can be evaluated using common regression metrics such as:
+This project is structured as a **Supervised Machine Learning Regression** problem.
 
-- **MAE — Mean Absolute Error**
-- **MSE — Mean Squared Error**
-- **RMSE — Root Mean Squared Error**
-- **R² Score — Coefficient of Determination**
+### Input
 
-These metrics help determine how accurately the model predicts insurance charges.
+Personal and lifestyle-related features:
+
+```text
+age
+sex
+bmi
+children
+smoker
+region
+```
+
+### Target
+
+```text
+charges
+```
+
+The objective is to learn the relationship between the input features and medical insurance charges.
 
 ---
 
-## 🛠️ Technologies Used
+## 🛠️ Technologies & Libraries
 
 | Technology | Purpose |
 |---|---|
-| 🐍 **Python** | Programming language |
-| 📊 **Pandas** | Data manipulation |
+| 🐍 **Python** | Programming |
+| 🐼 **Pandas** | Data manipulation & analysis |
 | 🔢 **NumPy** | Numerical computing |
-| 📈 **Matplotlib** | Data visualization |
+| 📊 **Matplotlib** | Data visualization |
 | 🎨 **Seaborn** | Statistical visualization |
-| 🧠 **Scikit-learn** | Machine Learning |
+| 🤖 **Scikit-learn** | Data preprocessing & ML |
 | 📓 **Jupyter Notebook** | Development & experimentation |
 
 ---
@@ -195,9 +318,7 @@ These metrics help determine how accurately the model predicts insurance charges
 insurance_model/
 │
 ├── 📄 insurance.csv
-│
 ├── 📓 insurance.ipynb
-│
 └── 📄 README.md
 ```
 
@@ -205,25 +326,25 @@ insurance_model/
 
 ## 🚀 Getting Started
 
-### 1️⃣ Clone the Repository
+### 1. Clone the Repository
 
 ```bash
 git clone https://github.com/fahimshahariar56/insurance_model.git
 ```
 
-### 2️⃣ Navigate to the Project
+### 2. Navigate to the Project
 
 ```bash
 cd insurance_model
 ```
 
-### 3️⃣ Create a Virtual Environment
+### 3. Create a Virtual Environment
 
 ```bash
 python -m venv venv
 ```
 
-### 4️⃣ Activate the Environment
+### 4. Activate the Environment
 
 #### Windows
 
@@ -237,13 +358,13 @@ venv\Scripts\activate
 source venv/bin/activate
 ```
 
-### 5️⃣ Install Dependencies
+### 5. Install Required Libraries
 
 ```bash
 pip install pandas numpy matplotlib seaborn scikit-learn jupyter
 ```
 
-### 6️⃣ Launch Jupyter Notebook
+### 6. Start Jupyter Notebook
 
 ```bash
 jupyter notebook
@@ -257,70 +378,47 @@ insurance.ipynb
 
 ---
 
-## 📈 Key Insights
+## 📚 Key Learning Outcomes
 
-The analysis demonstrates that several factors can have a significant relationship with medical insurance costs.
+This project demonstrates practical understanding of:
 
-In particular:
-
-- 🚬 **Smoking status** can strongly influence insurance charges.
-- 👤 **Age** can affect expected medical expenses.
-- ⚖️ **BMI** may contribute to differences in insurance costs.
-- 👶 **Number of children** can have an impact on overall charges.
-- 🌎 **Region** may also contribute to variation in insurance costs.
-
-> **Note:** These relationships represent patterns learned from the dataset and should not be interpreted as medical, financial, or insurance advice.
-
----
-
-## ⚠️ Limitations
-
-This project is intended for **educational and Machine Learning practice purposes**.
-
-The predictions should not be considered actual insurance quotes.
-
-Real-world insurance pricing can depend on many additional factors, including:
-
-- Medical history
-- Policy coverage
-- Claim history
-- Insurance provider rules
-- Local regulations
-- Additional demographic and financial information
+- ✅ Data loading and inspection
+- ✅ DataFrame analysis
+- ✅ Missing-value checking
+- ✅ Exploratory Data Analysis
+- ✅ Categorical encoding
+- ✅ Feature engineering
+- ✅ One-hot encoding
+- ✅ Feature scaling
+- ✅ Pearson correlation
+- ✅ Chi-Square statistical testing
+- ✅ Feature selection
+- ✅ Preparing data for regression
 
 ---
 
 ## 🔮 Future Improvements
 
-Potential improvements for this project include:
+Possible future improvements include:
 
-- [ ] 🔬 Advanced feature engineering
-- [ ] 🤖 Compare multiple regression algorithms
+- [ ] 🤖 Train multiple regression models
+- [ ] 📊 Compare model performance
 - [ ] ⚙️ Hyperparameter tuning
-- [ ] 📊 Cross-validation
-- [ ] 📈 Advanced model evaluation
-- [ ] 🧠 Explainable AI with SHAP
-- [ ] 🌐 Build a prediction API using FastAPI
-- [ ] 🖥️ Create an interactive frontend
-- [ ] 🚀 Deploy the model as a web application
-- [ ] 🐳 Add Docker support
-- [ ] 🔄 Create an automated ML pipeline
+- [ ] 🔁 Cross-validation
+- [ ] 📏 Add MAE, MSE, RMSE and R² evaluation
+- [ ] 🧠 Add SHAP-based model explainability
+- [ ] 🌐 Build a FastAPI prediction service
+- [ ] 🖥️ Build an interactive web interface
+- [ ] 🐳 Dockerize the application
+- [ ] 🚀 Deploy the complete ML application
 
 ---
 
-## 🎓 Learning Outcomes
+## ⚠️ Disclaimer
 
-Through this project, the following Machine Learning concepts are practiced:
+This project is created for **educational and Machine Learning practice purposes**.
 
-- Data preprocessing
-- Exploratory Data Analysis
-- Feature analysis
-- Categorical encoding
-- Regression
-- Model training
-- Model evaluation
-- Data visualization
-- Prediction workflow
+The predicted insurance charges should not be considered real insurance quotes, medical advice, or financial advice.
 
 ---
 
@@ -337,10 +435,8 @@ https://github.com/fahimshahariar56
 
 ## ⭐ Support
 
-If you find this project useful or interesting, consider giving the repository a ⭐.
-
----
+If you find this project useful, consider giving the repository a ⭐ on GitHub.
 
 <p align="center">
-  <b>Built with 🐍 Python & 🤖 Machine Learning</b>
+  <b>Built with 🐍 Python • 📊 Data Science • 🤖 Machine Learning</b>
 </p>
